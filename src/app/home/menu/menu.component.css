@@ -1,0 +1,15 @@
+:host {
+    position: absolute;
+    top: 56px;
+    left: 0px;
+    right: 0px;
+    font-size: 15px;
+    display: inline-flex;
+    color: #124191;
+    background-color: #f5f6f9;
+    height: 45px;
+    padding-top: 1px;
+}
+.menu-bar {
+    width: 100%;
+}

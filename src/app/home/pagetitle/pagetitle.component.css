@@ -1,0 +1,45 @@
+.pagetitle{
+	margin: 0px 0px 5px 10px;
+	max-height: 33px;
+}
+
+span.pagetitletext {
+	margin-top: 5px;
+	font-size: 16px;
+	display: inline-block;
+	-webkit-webkit-transform: scale(1.2);
+    -moz-webkit-transform: scale(1.2);
+    -o-webkit-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+}
+span.pagetitletext:hover {
+	color: #124191;
+	cursor: pointer;
+	-webkit-transition: all 650ms ease 0s;
+    transition: all 650ms ease 0s;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.add_icon_title{
+    float: right;
+	font-size: 27px;
+	-webkit-transition: all 650ms ease 0s;
+    transition: all 650ms ease 0s;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+.add_icon_title:hover {
+	font-size: 28px;
+	color: #124191;
+	-webkit-webkit-transform: scale(1.2);
+    -moz-webkit-transform: scale(1.2);
+    -o-webkit-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+}
+
+.tablesearch {
+	top: -11px;
+	right: -39px;
+}

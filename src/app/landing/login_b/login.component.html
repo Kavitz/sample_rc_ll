@@ -1,0 +1,39 @@
+<section class="login-bg">
+	<div class="login-container">
+		<h4 class="login-prod-name text-primary">Virtual 1830</h4>
+		<p class="login-version">Version 1.7.1</p>
+		<p *ngIf="showValidLogin" class="login-error nomar"></p>
+
+		<form [formGroup]="loginform">
+			<div class="row loginrow">
+				<div class="col-md-6 formcolumn">
+					<mat-form-field>
+						<input matInput formControlName='username' placeholder="Username" value="">
+					</mat-form-field>
+				</div>
+				<div class="col-md-6 formcolumn">
+					<mat-form-field>
+						<input matInput formControlName='password' placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+						<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+					</mat-form-field>
+				</div>
+			</div>
+			<div class="row errordiv" *ngIf="errortext != ''">
+				<div class="col-md-12">
+					{{errortext}}
+				</div>
+			</div>
+			<div class="row loginrow">
+				<div class="col-md-12">
+					<button class="btn-block btn primary-btn" id="applicationLoginButton" (click)="doLogin()" mat-button [disabled]='loginform.invalid'>LOG
+						IN</button>
+				</div>
+			</div>
+			<div class="row loginrow">
+				<div class="col-md-12">
+					<a (click)="openBottomSheet()">New User? Click here</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>

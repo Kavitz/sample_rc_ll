@@ -1,0 +1,79 @@
+<mat-card [ngClass]="'custommatcard'" [ngStyle]="{'font-size':'16px','height':'335px'}">
+    <mat-card-header [ngClass]="'custommatheader'">
+        <mat-card-title [ngClass]="'custommattitle'" [ngStyle]="{'font-size':'16px'}">User Registration</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="rForm">
+        <mat-card-content [ngStyle]="{'font-size':'16px','height':'170px'}">
+            <div [ngClass]="'row'">
+                <div [ngClass]="'col-sm-6'">
+                    <mat-form-field>
+                        <input type="text" id="username" matInput formControlName="username" placeholder="UserName">
+                        <mat-hint>
+                            Special characters not allowed.
+                        </mat-hint>
+                        <mat-error *ngIf="(rForm.get('username').touched || (rForm.get('username').dirty ) && (rForm.get('username').errors ))">
+                            <span *ngIf="rForm.get('username').errors?.required">
+                                Required
+                            </span>
+                            <span *ngIf="(rForm.get('username').errors?.pattern)">
+                                Please enter valid name
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div [ngClass]="'col-sm-6'">
+                    <mat-form-field>
+                        <mat-select placeholder="User Group" formControlName="usergroup">
+                            <mat-option *ngFor="let group of grouplist$ | async as usergroup" [value]="group.groupname">
+                                {{group.groupname}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div [ngClass]="'row'">
+                <div [ngClass]="'col-sm-6'">
+                    <mat-form-field>
+                        <input type="password" id="password" matInput formControlName="password" placeholder="Password">
+                        <mat-hint>Should have atleast one upper and lowercase letter, one number or one special
+                            characters with length between 8 and 15 characters.</mat-hint>
+                        <mat-error *ngIf="(rForm.get('password').touched || (rForm.get('password').dirty ) && (rForm.get('password').errors ))">
+                            <span *ngIf="rForm.get('password').errors?.required">
+                                Required
+                            </span>
+                            <span *ngIf="(rForm.get('password').errors?.pattern)">
+                                Please enter valid password
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div [ngClass]="'col-sm-6'">
+                    <mat-form-field>
+                        <input type="password" id="confirmpassword" matInput formControlName="confirmpassword"
+                            placeholder="Confirm Password">
+                        <mat-error *ngIf="(rForm.get('confirmpassword').touched || (rForm.get('confirmpassword').dirty ) && (rForm.get('confirmpassword').errors ))">
+                            <span *ngIf="rForm.get('confirmpassword').errors?.required">
+                                Required
+                            </span>
+                            <span *ngIf="rForm.get('confirmpassword').errors?.notEquivalent">
+                                Password does not match
+                            </span>
+
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions [ngClass]="'matcustioncardaction'">
+            <div [ngClass]="'row'">
+                <div [ngClass]="'col-sm-6 errormsgblock'">
+                    <mat-error>{{statusmessage}}</mat-error>
+                </div>
+                <div [ngClass]="'col-sm-6'">
+                    <button type="button" mat-raised-button (click)="closeFormGroupDirective()">Close</button>
+                    <button type="button" mat-raised-button (click)="registerFormGroupDirective(register)">Register</button>
+                </div>
+            </div>
+        </mat-card-actions>
+    </form>
+</mat-card>

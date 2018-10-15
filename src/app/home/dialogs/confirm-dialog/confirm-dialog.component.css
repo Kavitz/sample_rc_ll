@@ -1,0 +1,16 @@
+.actionrow {
+    position: relative;
+    left: 80px;
+}
+
+.dialogbtn {
+    font-family: "Nokia Pure",Helvetica,Arial,sans-serif;
+}
+
+.dialogbtn:hover {
+    color: #0d2e67;
+}
+
+.mat-dialog-container {
+    overflow: hidden !important;
+}

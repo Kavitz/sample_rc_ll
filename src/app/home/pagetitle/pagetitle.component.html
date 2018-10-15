@@ -1,0 +1,25 @@
+<div [ngClass]="'pagetitle row'">
+	<div [ngClass]="'col-sm-8'">
+		<span [ngClass]="'pagetitletext'">{{pagetitle}}</span>
+	</div>
+	<!-- <div [ngClass]="'col-sm-1'" *ngIf='searchbtn'>
+		<button mat-icon-button [ngClass]="'add_icon_btn_title'" id="refresh" (click)="onRefreshClick()">
+			<mat-icon [ngClass]="'add_icon_title'" aria-label="Refresh">autorenew</mat-icon>
+		</button>
+	</div> -->
+	<div [ngClass]="'col-sm-1'" *ngIf='addbtn'>
+			<button mat-icon-button [ngClass]="'add_icon_btn_title'" id="refresh" (click)="onRefreshClick()">
+					<mat-icon [ngClass]="'add_icon_title'" aria-label="Refresh">autorenew</mat-icon>
+				</button>
+		<button mat-icon-button [ngClass]="'add_icon_btn_title'" id="add" (click)="onAddclick()">
+			<mat-icon [ngClass]="'add_icon_title'" aria-label="Add">add_box</mat-icon>
+		</button>
+	</div>
+	<div [ngClass]="'col-sm-2'" *ngIf='searchbtn'>
+		<mat-form-field [floatLabel]="'never'" [ngClass]="'tablesearch'">
+			<input matInput placeholder="search" id="search" (keyup)="applyFilter($event.target.value)">
+			<mat-icon matSuffix>search</mat-icon>
+		</mat-form-field>
+	</div>
+</div>
+<hr>

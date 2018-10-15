@@ -1,0 +1,333 @@
+<div [ngClass]="'configurationdiv'">
+	<v1830-pagetitle [pagetitle]=pagetitle [refreshbtn]=refreshbtn [addbtn]=addbtn [searchbtn]=searchbtn
+	 (onRefreshClickFromPageHeader)="onRefreshClickFromShelf($event)" (onAddClickFromPageHeader)="onAddClick()"></v1830-pagetitle>
+	<div>
+		<mat-form-field [ngStyle]="{'width':'400px', 'left':'470px'}">
+			<mat-select placeholder="Resource Configuration" id="resouceconfiguration">
+				<mat-option *ngFor="let state of resourceconfiguration" [value]="state" (click)="getVMProperties(state)">{{state}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<button mat-icon-button matTooltip="" [ngStyle]="{'left': '480px'}">
+			<i class="material-icons helpicon">
+				info
+			</i>
+		</button>
+	</div>
+
+	<div [ngClass]="'infodiv'" *ngIf="displayhide; else showvalues">
+		Please choose resource configuration.
+	</div>
+
+	<ng-template #showvalues>
+		<form [formGroup]="simplevmForm">
+			<mat-card [ngClass]="'custommatcard'">
+				<mat-card-header [ngClass]="'custommatheader'">
+					<mat-card-title [ngClass]="'custommattitle'">VM Properties</mat-card-title>
+				</mat-card-header>
+				<mat-card-content>
+					<div [ngClass]="'row'">
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="vmname" matInput formControlName="vmname" placeholder="VM Name" required>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="ipaddress" matInput formControlName="ipaddress" placeholder="Eth0 IP Address" required>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+
+						</div>
+					</div>
+				</mat-card-content>
+			</mat-card>
+			<mat-card [ngClass]="'custommatcard'">
+				<mat-card-header [ngClass]="'custommatheader'">
+					<mat-card-title [ngClass]="'custommattitle'">Node Properties</mat-card-title>
+				</mat-card-header>
+				<mat-card-content>
+					<div [ngClass]="'row'">
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="loadurl" matInput formControlName="neloadurl" placeholder="NE Load URL" required>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="nebuild" matInput formControlName="nebuild" placeholder="NE Build" required>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="nodetid" matInput formControlName="nodetid" placeholder="Node TID">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+					</div>
+					<div [ngClass]="'row'">
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" placeholder="Master Shelf Type" aria-label="Shelf Type" matInput formControlName="mastershelftype"
+								 id="mshelftype" [matAutocomplete]="auto">
+								<mat-autocomplete #auto="matAutocomplete">
+									<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+										{{option}}
+									</mat-option>
+								</mat-autocomplete>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<mat-select placeholder="{{title}}" formControlName="shelfmode" id="shelfmode">
+									<mat-option *ngFor="let mode of editshelfModeArray" [value]="mode.value">
+										{{mode.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="loopbackip" matInput formControlName="loopbackip" id="loopbackip" placeholder="LoopBack IP">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+					</div>
+					<div [ngClass]="'row'">
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<mat-select placeholder="Boot Level" formControlName="bootlevel" id="simbootlevel">
+									<mat-option *ngFor="let boot of bootlevel" [value]="boot.value">
+										{{boot.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<mat-select placeholder="Run Level" formControlName="runlevel" id="simrunlevel">
+									<mat-option *ngFor="let run of runlevel" [value]="run.value">
+										{{run.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'" [ngStyle]="{'padding-top': '12px'}">
+							<mat-checkbox [ngStyle]="{'padding-right': '12px'}" formControlName="valgrind" [labelPosition]="before" id="valgrind">Valgrind</mat-checkbox>
+							<mat-checkbox formControlName="localinstall" [labelPosition]="before">Local Install</mat-checkbox>
+						</div>
+					</div>
+				</mat-card-content>
+			</mat-card>
+			<mat-card [ngClass]="'custommatcard'">
+				<mat-card-header [ngClass]="'custommatheader'">
+					<mat-card-title [ngClass]="'custommattitle'">VM Settings</mat-card-title>
+				</mat-card-header>
+				<mat-card-content>
+					<div [ngClass]="'row'">
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<mat-select placeholder="VM Disk Mode" id="diskmode" formControlName="vmdiskmode">
+									<mat-option *ngFor="let mode of diskmodeopt" [value]="mode.value">
+										{{mode.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="number" id="noofcores" matInput formControlName="noofcores" placeholder="Number Of Cores">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'95px'}">
+								<input type="number" id="ramsize" matInput formControlName="ramsize" placeholder="RAM Size">
+							</mat-form-field>&nbsp;&nbsp;
+							<mat-form-field [ngStyle]="{'width':'95px'}">
+								<mat-select placeholder="RAM Unit" formControlName="ramunit" id="ramunit">
+									<mat-option *ngFor="let unit of ramunit" [value]="unit.value">
+										{{unit.viewValue}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+					</div>
+
+				</mat-card-content>
+			</mat-card>
+			<mat-card [ngClass]="'custommatcard'">
+				<mat-expansion-panel hideToggle="true" [disabled]="true" #mep1="matExpansionPanel" class="matExpansionPanelcustom">
+					<mat-expansion-panel-header class="matexpansionheadercustom">
+						<mat-panel-title [ngStyle]="{'color': '#124191'}">
+							Configure GMRE Properties&nbsp;&nbsp;
+							<mat-checkbox formControlName="configuregmre" [labelPosition]="before" (change)="mep1.expanded = !mep1.expanded"></mat-checkbox>
+						</mat-panel-title>	
+					</mat-expansion-panel-header>
+					<div [ngClass]="'row'">
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="gmreloadurl" matInput formControlName="gmreloadurl" placeholder="GMRE Load URL">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="gmrebuild" matInput formControlName="gmrebuild" placeholder="GMRE Build">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="gmrenodeip" matInput formControlName="gmrenodeip" placeholder="Node IP">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+					</div>
+					<div [ngClass]="'row'">
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="gmrenotifyip" matInput formControlName="gmrenotifyip" placeholder="Notify IP">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'" [ngStyle]="{'padding-top': '12px'}">
+							<mat-checkbox formControlName="activategmre" [labelPosition]="before">Activate On Commission</mat-checkbox>
+						</div>
+					</div>
+				</mat-expansion-panel>
+			</mat-card>
+			<mat-card [ngClass]="'custommatcard'">
+				<mat-expansion-panel hideToggle="true" [disabled]="true" #mep="matExpansionPanel" class="matExpansionPanelcustom">
+					<mat-expansion-panel-header class="matexpansionheadercustom">
+						<mat-panel-title [ngStyle]="{'color': '#124191'}">
+							{{loadurltitle}}&nbsp;&nbsp;
+							<mat-checkbox formControlName="configureoar" [labelPosition]="before" (change)="mep.expanded = !mep.expanded"></mat-checkbox>
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<div [ngClass]="'row'">
+
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="oarloadurl" matInput formControlName="oarloadurl" placeholder="{{propertytitle}} Load URL">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'">
+							<mat-form-field [ngStyle]="{'width':'250px'}">
+								<input type="text" id="oarbuild" matInput formControlName="oarbuild" placeholder="{{propertytitle}} Build">
+							</mat-form-field>
+							<button mat-icon-button matTooltip="">
+								<i class="material-icons helpicon">
+									info
+								</i>
+							</button>
+						</div>
+						<div [ngClass]="'col-sm-4'" [ngStyle]="{'padding-top': '12px'}">
+							<mat-checkbox formControlName="activateoar" [labelPosition]="before">Activate On Commission</mat-checkbox>
+						</div>
+					</div>
+
+				</mat-expansion-panel>
+			</mat-card>
+			<mat-card-actions [ngClass]="'matcustioncardaction'">
+				<div class="row" [ngStyle]="{'padding-left': '27cm'}">
+
+					<div class="col-sm-3">
+						<button id="refresh" mat-raised-button (click)="clearForm(true)">Refresh</button>
+					</div>
+					<div class="col-sm-4">
+						<button mat-raised-button [disabled]="!simplevmForm.valid" id="multideploy" (click)="clearForm(false)">Deploy
+							Multi</button>
+					</div>
+					<div class="col-sm-3">
+						<button mat-raised-button [disabled]="!simplevmForm.valid" id="deployvm" (click)="deployvm()">Deploy</button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</form>
+	</ng-template>
+	<mat-spinner mode="indeterminate" *ngIf="isShowProgress"></mat-spinner>

@@ -1,0 +1,196 @@
+<div [ngClass]="'configurationdiv'">
+<v1830-pagetitle [pagetitle]=pagetitle [refreshbtn]=refreshbtn [addbtn]=addbtn [searchbtn]=searchbtn (RefreshClickFromPageHeader)="refreshClick()"
+   (AddClickFromPageHeader)="onAddClick()"></v1830-pagetitle>
+   <mat-card class="addeditblock" *ngIf="!addclick" [@slideInOut]>
+		<mat-card-header>
+			<mat-card-title [ngClass]="'matcustomcardtitle'">Add Simlist</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="simbuilderform" #simform="ngForm">
+			<mat-card-content [ngClass]="'matcustomcardcontent'">
+				<div class="row">
+            <div class="col-sm-4">
+              <div *ngIf="choosenfile else filenames">
+             
+                  <input type="file" mat-raised-button requireFile formControlName="filename" (change)="onFileChange($event)" />
+                  <mat-hint></mat-hint>
+                <button mat-icon-button  matTooltip="This required option specifies the path to the simlist.xml file containing the definition of all nodes." [ngStyle]="{'padding-right':'1cm'}">
+                    <i class="material-icons ">
+                      info
+                    </i>
+                  </button>
+                  <div *ngIf="simlisterror">
+                      Please select valid simlist xml file.
+                  </div>
+              </div>
+     <ng-template #filenames>
+        <mat-form-field>
+            <input id="filename" matInput formControlName="filename" placeholder="Simlist file">
+          </mat-form-field>
+      <button mat-icon-button  matTooltip="This required option specifies the path to the simlist.xml file containing the definition of all nodes.">
+          <i class="material-icons ">
+            info
+          </i>
+        </button>
+     </ng-template>
+    
+            </div>
+          <div class="col-sm-4">
+            
+						<mat-form-field>
+              <mat-select  placeholder="Select Resource Configuration" formControlName="resourceconfig" required>
+                <mat-option *ngFor="let state of resourceconfiguration"[value]="state" >{{state}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-icon-button  matTooltip="This required option specifies the datastore server the guests will be installed.">
+                <i class="material-icons ">
+                  info
+                </i>
+              </button>
+          </div>
+          <div class="col-sm-4">
+						<mat-form-field>
+							<input id="ne_load" matInput formControlName="ne_load" placeholder="neload">
+            </mat-form-field>
+            <button mat-icon-button  matTooltip="This option can be used to specify the NE load to be used, e.g. 1830PSS-10.1-0. Otherwise it has to be given, or can be overwritten, via SimBuilder.py">
+                <i class="material-icons ">
+                  info
+                </i>
+              </button>
+          </div>
+          
+         
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field>
+                  <input id="gmre_load" matInput formControlName="gmre_load" placeholder="gmreload">
+                </mat-form-field>
+                <button mat-icon-button  matTooltip="With this option the GMRE load can be specified and GMRE will be installed, e.g. GPS62-03K
+                This option requires an simlist.xml file extended by GMRE related <sim-property> entries.">
+                    <i class="material-icons ">
+                      info
+                    </i>
+                  </button>
+              </div>
+            <div class="col-sm-4">
+                <mat-form-field>
+                  <input id="oar_load" matInput formControlName="oar_load" placeholder="oarload">
+                </mat-form-field>
+                <button mat-icon-button  matTooltip="With this option the OAR load can be specified and OAR will be installed, e.g. GPS62-03K
+                This option requires an simlist.xml file extended by OAR related <sim-property> entries.">
+                    <i class="material-icons ">
+                      info
+                    </i>
+                  </button>
+              </div>
+              <div class="col-sm-4">
+                  <mat-form-field>
+                    <input id="no_parallel_install" matInput formControlName="no_parallel_install" placeholder="parallelinstall">
+                  </mat-form-field>
+                  <button mat-icon-button  matTooltip="The SimBuilder.py tool is able to perform the installation/provisioning of maximum <nbr> guest nodes in parallel.">
+                      <i class="material-icons ">
+                        info
+                      </i>
+                    </button>
+                </div>
+         
+         
+        </div>
+        <div class="row">
+        
+            <div class="col-sm-4">
+            
+                <mat-form-field>
+                  <input id="fiber_ip_address" matInput formControlName="fiber_ip_address" placeholder="fiberip">
+                
+                </mat-form-field>
+                <button mat-icon-button  matTooltip="With this option you can specify the IP address of the fibersim server.">
+                    <i class="material-icons ">
+                      info
+                    </i>
+                  </button>
+              </div>
+              <div class="col-sm-4">
+                  <mat-form-field>
+                      <input id="fiberport" matInput formControlName="fiber_port" placeholder="fiberport">
+                  </mat-form-field>
+                  <button mat-icon-button  matTooltip="With this option, the Fibersim port number can be specified if it differs from the default value 51101">
+                      <i class="material-icons ">
+                        info
+                      </i>
+                    </button>
+              </div>
+          
+          <div class="col-sm-4">
+         
+            
+            <mat-form-field>
+							<input id="vm_group" matInput formControlName="vm_group" placeholder="VM Group">
+						</mat-form-field>
+            <button mat-icon-button  matTooltip="This option allows to restict the installation and provisioning to a given comma separated list of node names as defined in the simlist.xml file attribute 'name'.">
+                <i class="material-icons ">
+                  info
+                </i>
+              </button>
+           
+          </div>
+        </div>
+          <div class="row">
+              <div class="col-sm-4">
+                  <mat-form-field>
+                      <input id="delay_bet_install" matInput formControlName="delay_bet_install" placeholder="Delay between Installation">
+                    </mat-form-field>
+                    <button mat-icon-button  matTooltip="This option allowes to change the delay between parallel installation starts.">
+                        <i class="material-icons ">
+                          info
+                        </i>
+                      </button>
+              </div>
+              <div class="col-sm-2">
+                  <mat-checkbox  formControlName="install" [labelPosition]="before">Installation</mat-checkbox>
+                  <button mat-icon-button  matTooltip="This option is required to perform the installation of the guest nodes. Guest nodes which are already installed are skipped when to given the option '-f' (force mode) in addition.">
+                      <i class="material-icons ">
+                        info
+                      </i>
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <mat-checkbox formControlName="forceinstall" [labelPosition]="before">Force Installation</mat-checkbox>
+                    <button mat-icon-button  matTooltip="This option forces the installation of already present guest nodes. This is not an upgrade but a fresh installation.">
+                        <i class="material-icons ">
+                          info
+                        </i>
+                      </button>
+                  </div>
+                  <div class="col-sm-2">
+                      <mat-checkbox formControlName="provision" [labelPosition]="before">Local Provisioning</mat-checkbox>
+                      <button mat-icon-button  matTooltip="This option is required to perform the provisioning of the shelfs and slots (for line card simulation). Provisioning is alway executed after the installation.">
+                          <i class="material-icons ">
+                            info
+                          </i>
+                        </button>
+                    </div>
+             
+                </div>
+				
+      </mat-card-content>
+      <mat-card-actions [ngClass]="'matcustioncardaction'">
+				<div class="row" [ngStyle]="{'margin-top': '16px','margin-right':'46px'}">
+					<div class="col-sm-9 errormsgblock">
+						<mat-error [hidden]="!(!simform.form.valid && simform.submitted)">Please fill out necessary field!</mat-error>
+					</div>
+					<div class="col-sm-1">
+						<button type="reset" mat-raised-button (click)="clearForm(true)">Close</button>
+					</div>
+					<div class="col-sm-1">
+						<button type="reset" mat-raised-button (click)="clearForm(false)">Clear</button>
+					</div>
+					<div class="col-sm-1">
+						<button mat-raised-button (click)="addSimbuilderFields()">{{buttonname}}</button>
+					</div>
+				</div>
+			</mat-card-actions>
+      </form>
+    </mat-card>
+   <v1830-table [columns]=columns [elements]=elements (editClickFromPageHeader)='onEdit($event)' (deleteClickFromPageHeader)='onDelete($event)'></v1830-table>
+  </div>

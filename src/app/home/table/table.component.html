@@ -1,0 +1,27 @@
+<div [ngClass]="'table-container mat-elevation-z8'">
+	<table mat-table [ngClass]="'customtable'" [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc">
+		<ng-container *ngFor="let column of columns" matColumnDef="{{column.columnDef}}">
+			<th mat-header-cell [ngStyle]="{'width':column.width}" *matHeaderCellDef mat-sort-header [hidden]="column.dispcolumn" [ngClass]="'customtableheader'"> {{column.header}}
+			</th>
+			<td mat-cell *matCellDef="let row" [hidden]="column.dispcolumn" [ngClass]="'customtablecell'"> {{column.cell(row)}} </td>
+		</ng-container>
+		<ng-container matColumnDef="Edit/Delete">
+			<th mat-header-cell  [ngStyle]="{'width':'10%'}" *matHeaderCellDef [ngClass]="'customtableheader'"> Action </th>
+			<td mat-cell *matCellDef="let row" [ngClass]="'customtablecell'">
+				<button mat-icon-button (click)="onEditClick(row)" class="editbutton" [ngStyle]="{'width':'35px','height':'35px','padding-bottom': '8px'}">
+					<i class="material-icons ">
+						edit
+					</i>
+				</button>
+				<button mat-icon-button (click)="onDeleteClick(row)" [ngStyle]="{'width':'35px','height':'35px','padding-bottom': '8px'}">
+					<i class="material-icons ">
+						delete_forever
+					</i>
+				</button>
+			</td>
+		</ng-container>
+		<tr mat-header-row [ngClass]="'customtableheader'" *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+		<tr mat-row [ngClass]="'customtablerow'" *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+</div>
+<mat-paginator [ngClass]="'custompaginator'" (onclick)="pag($event.target.value)" [pageSize]="10" [pageSizeOptions]="[5,10,20]"></mat-paginator>

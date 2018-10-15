@@ -1,0 +1,84 @@
+
+// Variables
+$font-primary: "Nokia Pure",Helvetica,Arial,sans-serif;
+
+//colors
+$primary-color: #124191;
+$light-blue: #0D3E93;
+$lighter-blue: #7F98C3;
+$lighten-blue :#00C9FF;
+$grey-color:#5d5b5b;
+$lighten-grey: #666666;
+$light-grey: #999999;
+$dark-grey: #333333;
+$dark-red: #d0021b;
+$pitchblack: #000000;
+$white: #ffffff;
+$light-red: #f44336;
+$green: #8ec741;
+$error-red: rgba(245, 62, 62, 0.87); 
+$dialog-white: #FAFAFA;
+$warning-yellow: #FFCC01;
+$tooltip-head-grey: #757575;
+$table-grey : #f7f7f7;
+$table-head-grey: #f9f9f9;
+$pale-grey: #f1f1f1;
+$pitch-grey: #999696;
+$tooltip-grey: #d9d9d9;
+$select-box-blue: #6193ea;
+$select-box-carat-grey: #737373;
+
+// mixins
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+        -moz-border-radius: $radius;
+        -ms-border-radius: $radius;
+            border-radius: $radius;
+}
+
+@mixin translate($x, $y) {
+    -webkit-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    transform: translate($x, $y);
+}
+
+@mixin translate-important($x, $y) {
+    -webkit-transform: translate($x, $y) !important;
+    -moz-transform: translate($x, $y) !important;
+    -o-transform: translate($x, $y) !important;
+    -ms-transform: translate($x, $y) !important;
+    transform: translate($x, $y) !important;
+}
+
+@mixin fixed-dimension($width, $height) {
+    width:$width;
+    height:$height;
+}
+
+@mixin box-shadow-none() {
+    -webkit-box-shadow: none;
+    -o-box-shadow: none;
+    -ms-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+@mixin box-shadow($h, $top, $left, $blur, $color) {
+    -webkit-box-shadow: $h $top $left $blur $color;
+    -moz-box-shadow: $h $top $left $blur $color;
+    box-shadow: $h $top $left $blur $color;
+}
+
+@mixin box-shadow-twice($h, $top, $left, $blur, $color, $h1, $top1, $left1, $blur1, $color1) {
+    -webkit-box-shadow: $h $top $left $blur $color, $h1 $top1 $left1 $blur1 $color1;
+    -moz-box-shadow: $h $top $left $blur $color, $h1 $top1 $left1 $blur1 $color1;
+    box-shadow: $h $top $left $blur $color, $h1 $top1 $left1 $blur1 $color1;
+}
+
+@mixin box-shadow-twice-inset($h, $top, $left, $blur, $color, $inset, $h1, $top1, $left1, $blur1, $color1) {
+    -webkit-box-shadow: $h $top $left $blur $color, $inset $h1 $top1 $left1 $blur1 $color1;
+    -moz-box-shadow: $h $top $left $blur $color, $inset $h1 $top1 $left1 $blur1 $color1;
+    box-shadow: $h $top $left $blur $color, $inset $h1 $top1 $left1 $blur1 $color1;
+}

@@ -1,0 +1,5 @@
+<div [ngClass]="'configurationdiv'">
+	<v1830-pagetitle [pagetitle]=pagetitle [refreshbtn]=refreshbtn [addbtn]=addbtn [searchbtn]=searchbtn (RefreshClickFromPageHeader)="refreshClick()"
+	 (AddClickFromPageHeader)="onAddClick()"></v1830-pagetitle>
+	<v1830-table [columns]=columns [elements]=elements (editClickFromPageHeader)='onEdit($event)' (deleteClickFromPageHeader)='onDelete($event)'></v1830-table>
+</div>

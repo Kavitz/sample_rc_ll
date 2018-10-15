@@ -1,0 +1,87 @@
+<div class="menu-bar">
+	<div class="row">
+		<div class="col-sm-1">
+			<button mat-button id="deployment" [matMenuTriggerFor]="deployment" #deploybtn="matMenuTrigger" (click)="deploybtn.openMenu()">Deployment</button>
+			<mat-menu #deployment="matMenu" xPosition="after">
+				<span (mouseleave)="deploybtn.closeMenu()">
+					<button class="custommenuitem" id="simplevm" mat-menu-item routerLink="./simplevm" routerLinkActive="active">Simple
+						VM</button>
+					<button class="custommenuitem" id="simbuilder" mat-menu-item routerLink="./simbuilder" routerLinkActive="active">Sim Builder</button>
+				</span>
+			</mat-menu>
+		</div>
+		<div class="col-sm-1">
+			<button mat-button id="configuration" [matMenuTriggerFor]="configuration" #configurationbtn="matMenuTrigger"
+			 (click)="configurationbtn.openMenu()">Configuration</button>
+			<mat-menu #configuration="matMenu">
+				<span (mouseleave)="configurationbtn.closeMenu()">
+					<button class="custommenuitem" id="ovf" mat-menu-item routerLink="./ovf" routerLinkActive="active">OVF</button>
+					<button class="custommenuitem" id="vcenter" mat-menu-item routerLink="./vcenter" routerLinkActive="active">vCenter</button>
+					<button class="custommenuitem" id="rc" mat-menu-item routerLink="./resources" routerLinkActive="active">Resource</button>
+				</span>
+			</mat-menu>
+		</div>
+		<div class="col-sm-1">
+			<button mat-button id="management" routerLink="./managevms" routerLinkActive="active" #managementbtn="matMenuTrigger"
+			 (click)="managementbtn.openMenu()" [matMenuTriggerFor]="management">Management</button>
+			<mat-menu #management="matMenu">
+				<span (mouseleave)="managementbtn.closeMenu()">
+					<button id="vm" class="custommenuitem" mat-menu-item routerLink="./vms" routerLinkActive="active">Virtual Machine</button>
+				</span>
+			</mat-menu>
+		</div>
+		<div class="col-sm-1">
+			<button mat-button id="logs" routerLink="./logs" routerLinkActive="active" #logsbtn="matMenuTrigger" (click)="logsbtn.openMenu()"
+			 [matMenuTriggerFor]="logs">Logs</button>
+			<mat-menu #logs="matMenu">
+				<span (mouseleave)="logsbtn.closeMenu()">
+					<button id="log-deployment" class="custommenuitem" mat-menu-item routerLink="./logs/deployment" routerLinkActive="active">Deployment</button>
+					<button id="log-simbuilder" class="custommenuitem" mat-menu-item routerLink="./logs/simbuilder" routerLinkActive="active">Sim Builder</button>
+					<button id="log-upgrade" class="custommenuitem" mat-menu-item routerLink="./upgrade" routerLinkActive="active">Upgrade</button>
+				</span>
+			</mat-menu>
+
+		</div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-1"></div>
+		<div class="col-sm-1">
+			<button mat-button id="administration" [matMenuTriggerFor]="administration" #adminbtn="matMenuTrigger" (click)="adminbtn.openMenu()"
+			 class="adminmenubtn">
+				<mat-icon>supervisor_account</mat-icon>
+			</button>
+			<mat-menu #administration="matMenu">
+				<span (mouseleave)="adminbtn.closeMenu()">
+					<button class="custommenuitem" mat-menu-item routerLink="./manageusers" routerLinkActive="active">Manage Users</button>
+					<button class="custommenuitem" mat-menu-item routerLink="./managegroups" routerLinkActive="active">Manage Groups</button>
+				</span>
+			</mat-menu>
+		</div>
+		<div class="col-sm-1">
+			<button mat-button id="settings" [matMenuTriggerFor]="setting" class="adminmenubtn" #settingbtn="matMenuTrigger"
+			 (click)="settingbtn.openMenu()">
+				<mat-icon>settings</mat-icon>
+			</button>
+			<mat-menu #setting="matMenu">
+				<span (mouseleave)="settingbtn.closeMenu()">
+					<button class="custommenuitem" mat-menu-item routerLink="./ChangePassword" routerLinkActive="active">Change
+						Password</button>
+				</span>
+			</mat-menu>
+		</div>
+		<div class="col-sm-1">
+			<button mat-button id="profile" [matMenuTriggerFor]="profile" class="adminmenubtn" #profilebtn="matMenuTrigger" 
+			 (click)="profilebtn.openMenu()">
+				<mat-icon>account_circle</mat-icon>
+			</button>
+			<mat-menu #profile="matMenu" >
+				<span (mouseleave)="profilebtn.closeMenu()">
+					<button class="custommenuitem" mat-menu-item routerLink="./profile" id="userprofile" routerLinkActive="active">Profile</button>
+					<button class="custommenuitem" mat-menu-item routerLink="." id="logout" (click)="doLogout()">Logout</button>
+				</span>
+			</mat-menu>
+		</div>
+	</div>
+</div>

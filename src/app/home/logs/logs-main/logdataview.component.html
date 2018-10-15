@@ -1,0 +1,33 @@
+<div [ngStyle]="{'min-height':'calc(100vh - 120px)','min-width':'1040px'}">
+	<h2 mat-dialog-title>
+		{{data.title}} -Log </h2>
+	<hr>
+	<mat-dialog-content #scrollMe [ngStyle]="{'min-height': '400px'}">
+		<div style="white-space: pre-line;">{{data.logdata}}</div>
+	</mat-dialog-content>
+	<hr>
+	<mat-dialog-actions>
+		<div class="row" [ngStyle]="{'min-width': '1045px'}">
+			<div [ngClass]="'col-sm-7'">
+				<span [ngClass]="'tooglebtn'">
+					<label [hidden]="!ifautorefreshlog">Data will automatically refresh for each 15
+						seconds..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<label>Toggle AutoRefresh:&nbsp;&nbsp;</label>
+					<mat-slide-toggle id='autorefreshlogs' [(ngModel)]="autorefreshlog" (change)="change(autorefreshlog,data.title)"></mat-slide-toggle>
+				</span>
+			</div>
+			<div [ngClass]="'col-sm-3'">
+				<span [ngClass]="'tooglebtn'">
+					Toggle AutoScroll:&nbsp; &nbsp;<mat-slide-toggle id='autoscrolllog' [(ngModel)]="autoscrolllog"></mat-slide-toggle>
+				</span>
+			</div>
+			<div [ngClass]="'col-sm-1'">
+
+				<button mat-icon-button class="mat-raised-button" [ngClass]="'add_icon_btn_title'" (click)="refresh(data.title)">Refresh</button>
+			</div>
+			<div [ngClass]="'col-sm-1'">
+				<button type="button" class="mat-raised-button" (click)=" close()">Close</button>
+			</div>
+		</div>
+	</mat-dialog-actions>
+</div>

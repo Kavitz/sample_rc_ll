@@ -1,0 +1,119 @@
+.table-container {
+    height: 425px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-left: 30px;
+    margin-right: 10px;
+    width: 94%;
+    -webkit-transition: top 0.75s linear;
+      transition: top 0.75s linear;
+  }
+  .table-container::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      border-radius: 3px;
+      background-color: #F5F5F5;
+  }
+  
+  .table-container::-webkit-scrollbar
+  {
+      width: 12px;
+      background-color: #F5F5F5;
+  }
+  
+  .table-container::-webkit-scrollbar-thumb
+  {
+      border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: #efefef;
+  }
+  
+  .customtable {
+    width: 100%;
+    font-family: "Nokia Pure",Helvetica,Arial,sans-serif;
+    margin-top: 0px;
+    margin-left: 1px;
+  }
+  .customtableheader{
+    font-size: 14px;
+    width: 20%;
+    height: 40px;
+    background-color: #f5f6f9;
+    color: #545454;
+  }
+  .customtableheader:hover {
+    color: #124191;
+  }
+  .customtablerow {
+    height: 40px;
+  }
+  
+  .custompaginator {
+    position: relative;
+    bottom: 12px;
+    right: 25px;
+    background: hsla(0, 0%, 0%, 0)
+  }
+  .success {
+    color: green;
+  }
+  .failed {
+    color: red;
+  }
+  .deployed {
+    color: rgb(231, 231, 3);
+  }
+  .ongoing {
+    color: rgb(231, 231, 3);
+  }
+  .partialsuccess {
+    color: #d2a521;
+  }
+  .pagetitle{
+    margin: 0px 0px 5px 10px;
+    max-height: 33px;
+  }
+  
+  span.pagetitletext {
+    margin-top: 5px;
+    font-size: 16px;
+    display: inline-block;
+    -webkit-webkit-transform: scale(1.2);
+      -moz-webkit-transform: scale(1.2);
+      -o-webkit-transform: scale(1.2);
+      -webkit-transform: scale(1.2);
+  }
+  span.pagetitletext:hover {
+    color: #124191;
+    cursor: pointer;
+    -webkit-transition: all 650ms ease 0s;
+      transition: all 650ms ease 0s;
+    -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+    background-color: rgb(18, 65, 145) !important;
+    color: rgb(18, 65, 145) !important;
+  }
+  
+  ::ng-deep .mat-ripple-element {
+    background: rgba(18, 65, 145, 0.1) !important;
+  }
+
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: rgb(18, 65, 145) !important;
+} 
+    
+::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: rgba(18, 65, 145, 0.3) !important;
+}
+
+
+.mat-checkbox-inner-container {
+  margin-top: 13px !important;
+  height: 17px !important;
+  width: 17px !important;
+}

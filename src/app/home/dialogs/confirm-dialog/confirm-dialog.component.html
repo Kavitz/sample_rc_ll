@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>
+    {{title}}</h2>
+<mat-dialog-content>
+    <p>{{ message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="actionrow row">
+        <div class="col-sm-6">
+            <button type="button" *ngIf="button3 !== 'deploy'" class="mat-raised-button dialogbtn" (click)="dialogRef.close()">Cancel</button>
+        </div>
+        <div class="col-sm-6">
+            <button type="button" class="mat-raised-button dialogbtn" (click)="dialogRef.close(true)">{{buttonlabel}}</button>
+        </div>
+    </div>
+</mat-dialog-actions>

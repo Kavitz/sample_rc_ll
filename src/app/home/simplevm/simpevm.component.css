@@ -1,0 +1,75 @@
+.customsidenav-container {
+    position: relative;
+    height: calc( 100vh - 176px);
+}
+
+.customsidenav {
+    min-width: 170px;
+    max-width: 230px;
+    height: calc( 100vh - 179px);
+    overflow-y: auto;
+    /* overflow-y: scroll; */
+}
+
+.custommatcard {
+    margin: 12px;
+    padding: 15px;
+    border: 1px solid #d0d2d6;
+}
+
+.custommatheader {
+    color: #124191;
+}
+
+.custommattite {
+    font-size: 15px;
+}
+
+.custommatitemlist {
+    height: 35px !important;
+    border-bottom: 1px solid #d3d4d6;
+}
+
+a.active {
+    background: blue;
+}
+
+.navtitle {
+    color: #112f63 !important;
+    text-decoration: underline !important;
+}
+.navtitleicon {
+    height: 10px;
+    width: 10px;
+    font-size: 18px;
+    line-height: 0.2;
+}
+.infodiv {
+    position: relative;
+    top: 142px;
+    left: 530px;
+    width: 300px;
+}
+/* ::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+    background-color:#124191 !important;
+  }
+  .mat-ripple-element {
+    background: rgba(27, 142, 241, .4) !important;
+  } */
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+background-color: rgb(18, 65, 145) !important;
+}
+
+::ng-deep .mat-ripple-element {
+background: rgba(18, 65, 145, 0.1) !important;
+}
+
+.matExpansionPanelcustom {
+    box-shadow: none !important;
+
+}
+.matexpansionheadercustom {
+    padding-left: 7px !important;
+    height: 27px !important;
+}

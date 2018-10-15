@@ -1,0 +1,86 @@
+<div [ngClass]="'configurationdiv'">
+	<v1830-pagetitle [pagetitle]=pagetitle [refreshbtn]=refreshbtn [addbtn]=addbtn [searchbtn]=searchbtn
+	 (RefreshClickFromPageHeader)="refreshClick()" (AddClickFromPageHeader)="onAddClick()"></v1830-pagetitle>
+	<mat-card class="addeditblock" *ngIf="showform" [@slideInOut]>
+		<mat-card-header>
+			<mat-card-title [ngClass]="'matcustomcardtitle'">{{submitbuttonaction}} vCenter</mat-card-title>
+		</mat-card-header>
+		<form [formGroup]="vcenterform" #vcform="ngForm">
+			<mat-card-content [ngClass]="'matcustomcardcontent'">
+				<div class="row">
+					<div class="col-sm-3">
+						<mat-form-field>
+							<input id="name" matInput formControlName="name" placeholder="Name">
+							<mat-hint>Can contain alphanumeric, dot(.),hyphen(-),underscore(_)</mat-hint>
+							<mat-error *ngIf="(vcenterform.get('name').touched || (vcenterform.get('name').dirty ) && (vcenterform.get('name').errors ))">
+								<span *ngIf="vcenterform.get('name').errors?.required">
+									Required
+								</span>
+								<span *ngIf="(vcenterform.get('name').errors?.pattern)">
+									Please enter valid name
+								</span>
+							</mat-error>
+						</mat-form-field>
+						<button mat-icon-button  matTooltip="Name of the vCenter">
+							<i class="material-icons helpicon">
+							  info
+							</i>
+						  </button>
+					</div>
+					<div class="col-sm-3">
+						<mat-form-field>
+							<input id="ipaddress" matInput formControlName="ipaddress" placeholder="IP Address/Host Name">
+							<mat-error *ngIf="(vcenterform.get('ipaddress').touched || (vcenterform.get('ipaddress').dirty ) && (vcenterform.get('ipaddress').errors ))">Required</mat-error>
+						</mat-form-field>
+						<button mat-icon-button  matTooltip="Host Name or IP Address of the vCenter">
+							<i class="material-icons helpicon">
+							  info
+							</i>
+						  </button>
+					</div>
+					<div class="col-sm-3">
+						<mat-form-field>
+							<input matInput id="username" formControlName="username" placeholder="UserName">
+							<mat-error *ngIf="(vcenterform.get('username').touched || (vcenterform.get('username').dirty ) && (vcenterform.get('username').errors ))">Required</mat-error>
+						</mat-form-field>
+						<button mat-icon-button  matTooltip="UserName to acess the vCenter">
+							<i class="material-icons helpicon">
+							  info
+							</i>
+						  </button>
+					</div>
+					<div class="col-sm-3">
+						<mat-form-field>
+							<input matInput id="password" formControlName="password" placeholder="Password" [type]="hidepassword ? 'password' : 'text'">
+							<mat-icon matSuffix (click)="hidepassword = !hidepassword">{{hidepassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+							<mat-error *ngIf="(vcenterform.get('password').touched || (vcenterform.get('password').dirty ) && (vcenterform.get('password').errors))">Required</mat-error>
+						</mat-form-field>
+						<button mat-icon-button  matTooltip="Password to authenticate the login in vCenter">
+							<i class="material-icons helpicon">
+							  info
+							</i>
+						  </button>
+					</div>
+				</div>
+			</mat-card-content>
+			<mat-card-actions [ngClass]="'matcustioncardaction'">
+				<div class="row" [ngStyle]="{'margin-top': '16px','margin-right':'46px'}">
+					<div class="col-sm-9 errormsgblock">
+						<mat-error [hidden]="hidevalidationerror">{{errormessage}}</mat-error>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" id="close" mat-raised-button (click)="closeFormGroupDirective()">Close</button>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" id="clear" mat-raised-button (click)="clearFormGroupDirective(clearbuttonaction)">{{clearbuttonaction}}</button>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" id="submit" mat-raised-button (click)="doAction()">{{submitbuttonaction}}</button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</form>
+	</mat-card>
+	<v1830-table [columns]=columns [elements]="vcenters$ | async" (editClickFromPageHeader)='onEditClick($event)'
+	 (deleteClickFromPageHeader)='onDelete($event)'></v1830-table>
+</div>

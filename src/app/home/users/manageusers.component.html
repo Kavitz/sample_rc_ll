@@ -1,0 +1,54 @@
+<div [ngClass]="'configurationdiv'">
+		<v1830-pagetitle [pagetitle]=pagetitle [refreshbtn]=refreshbtn [addbtn]=addbtn [searchbtn]=searchbtn
+		(RefreshClickFromPageHeader)="refreshClick()" (AddClickFromPageHeader)="onAddClick()"></v1830-pagetitle>
+    <mat-card class="addeditblock" *ngIf="showform" [@slideInOut]>
+		<mat-card-header>
+			<mat-card-title [ngClass]="'matcustomcardtitle'">{{submitbuttonaction}} vCenter</mat-card-title>
+		</mat-card-header>
+		<form [formGroup]="vcenterform" #vcform="ngForm">
+			<mat-card-content [ngClass]="'matcustomcardcontent'">
+				<div class="row">
+					<div class="col-sm-3">
+						<mat-form-field>
+							<input id="name" matInput formControlName="username" placeholder="User Name">
+						</mat-form-field>
+					</div>
+					<div class="col-sm-3">
+						<mat-form-field>
+							
+							<input matInput id="password" formControlName="password" placeholder="Password" [type]="hidepassword ? 'password' : 'text'">
+						</mat-form-field>
+					</div>
+					<div class="col-sm-3">
+						<mat-form-field>
+							<input matInput id="usergroup" formControlName="usergroup" placeholder="User Group">
+						</mat-form-field>
+					</div>
+					<div class="col-sm-3">
+						<mat-form-field>
+								<input id="userrole" matInput formControlName="userrole" placeholder="User Role">
+						</mat-form-field>
+					</div>
+				</div>
+			</mat-card-content>
+			<mat-card-actions [ngClass]="'matcustioncardaction'">
+				<div class="row" [ngStyle]="{'margin-top': '16px','margin-right':'46px'}">
+					<div class="col-sm-9 errormsgblock">
+						<mat-error [hidden]="hidevalidationerror">{{errormessage}}</mat-error>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" mat-raised-button (click)="closeFormGroupDirective()">Close</button>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" mat-raised-button (click)="clearFormGroupDirective(clearbuttonaction)">{{clearbuttonaction}}</button>
+					</div>
+					<div class="col-sm-1">
+						<button type="button" mat-raised-button (click)="doAction()">{{submitbuttonaction}}</button>
+					</div>
+				</div>
+			</mat-card-actions>
+		</form>
+	</mat-card>
+     <v1830-table [columns]=columns [elements]="manageusers$ | async" (editClickFromPageHeader)='onEditClick($event)'
+	 (deleteClickFromPageHeader)='onDelete($event)'></v1830-table>
+    </div>

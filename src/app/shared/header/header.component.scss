@@ -1,0 +1,28 @@
+@import '../../../assets/variables';
+
+.main-header {
+    background: $primary-color;
+    min-height: 30px;
+    padding: 10px 0px;
+    
+    @include box-shadow-twice(0px, 0px, 4px, 0px, rgba(0, 0, 0, 0.12), 0px, 4px, 4px, 0px, rgba(0, 0, 0, 0.24));
+
+    .header-logo img {
+        max-width: 85px;
+    }
+    .header-logo {
+        display: inline !important;
+        position: relative;
+        left: 86%;
+        font-size: x-large;
+    }
+    .header-caption {
+        font-size: 17px;
+        padding: 3px 14px 0px 14px;
+        display: inline !important;
+        color: #fff;
+        font-weight: 600;
+        position: relative;
+        right: 77px;
+    }
+  }
